@@ -16,9 +16,8 @@ std::map<std::string, std::string> parseIni(std::string path) {
 		while (ifs.good()) {
 			std::getline(ifs, line);
 			std::regex_search(line, match, match_pattern);
-			if (match.size() < 3)
-				continue;
-			retval.insert_or_assign(match[1], match[2]);
+			if (match.size() == 3) // match[0] is the whole line if there is a match
+				retval.insert_or_assign(match[1], match[2]);
 		}
 	} else {
 		std::cout << "\x1B[31mCould not load the file!\033[0m ifs.is_open() == false\n";
