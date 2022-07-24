@@ -19,6 +19,7 @@ std::map<std::string, std::string> parseIni(std::string path) {
 			if (match.size() == 3) // match[0] is the whole line
 				retval.insert_or_assign(match[1], match[2]);
 		}
+		ifs.close();
 	} else {
 		std::cout << "\x1B[31mCould not load the file!\033[0m ifs.is_open() == false\n";
 	}
