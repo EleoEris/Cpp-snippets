@@ -25,3 +25,8 @@ int main(int argc, char* argv[]) {
 	A.print();
 	system("pause");
 }
+
+// Output: 
+// RGBA(0, 0, 0, 0)        (0)
+// RGBA(0, aa, 0, ff)      (ff00aa00) // be careful
+// RGBA(aa, 99, 66, 11)    (116699aa) // about the order
