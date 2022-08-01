@@ -1,0 +1,27 @@
+#include <iostream>
+
+struct Color {
+	Color() {}
+
+	union {
+		uint32_t rgba;
+		struct {
+			uint8_t r, g, b, a;
+		};
+	};
+
+	void print() {
+		std::cout << std::hex << "RGBA(" << (int)r << ", " << (int)g << ", " << (int)b << ", " << (int)a << ")\t(" << rgba << ")\n";
+	}
+};
+
+int main(int argc, char* argv[]) {
+	Color A, B;
+	A.print();
+	A.a = 0xff;
+	A.g = 0xaa;
+	A.print();
+	A.rgba = 0x116699aa;
+	A.print();
+	system("pause");
+}
