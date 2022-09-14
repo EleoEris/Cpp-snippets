@@ -4,7 +4,7 @@ struct Color {
 	Color() {}
 
 	union {
-		uint32_t rgba;
+		uint32_t rgba = 0;
 		struct {
 			uint8_t r, g, b, a;
 		};
