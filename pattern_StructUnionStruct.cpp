@@ -1,17 +1,21 @@
 #include <iostream>
+#include <iomanip>
 
 struct Color {
+	// be careful about the members order! Check output below
 	Color() {}
 
 	union {
 		uint32_t rgba = 0;
 		struct {
-			uint8_t r, g, b, a;
+			uint8_t a, b, g, r;
 		};
 	};
 
 	void print() {
-		std::cout << std::hex << "RGBA(" << (int)r << ", " << (int)g << ", " << (int)b << ", " << (int)a << ")\t(" << rgba << ")\n";
+		std::cout 
+			<< std::hex << "RGBA(" << (int)r << ", " << (int)g << ", " << (int)b << ", " << (int)a
+			<< ")\t(0x" << std::right << std::setfill('0') << std::setw(8) << rgba << ")\n";
 	}
 };
 
@@ -27,6 +31,7 @@ int main(int argc, char* argv[]) {
 }
 
 // Output: 
-// RGBA(0, 0, 0, 0)        (0)
-// RGBA(0, aa, 0, ff)      (ff00aa00) // be careful
-// RGBA(aa, 99, 66, 11)    (116699aa) // about the order
+// RGBA(0, 0, 0, 0)        (0x00000000)
+// RGBA(0, aa, 0, ff)      (0x00aa00ff)
+// RGBA(11, 66, 99, aa)    (0x116699aa)
+// RGBA(0, 0, 0, 1)        (0x00000001)
